@@ -1,0 +1,50 @@
+name: ci_backend
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+  workflow_run:
+    workflows: [pr_maintainer_checklist]
+    types:
+      - completed
+
+env:
+    # For testing only
+    SECRET_KEY: "EApq1kp%(!`:G]oZ-Uc@bWD1'M:$1t-4+aUxVFExOSAko[s=rYU:Gle:2dnp(x<"
+    DEBUG: "True"
+    ALLOWED_HOSTS: "*"
+
+jobs:
+  backend:
+    name: Run PR Backend Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Check Formatting [ruff]
+        run: ruff format ./backend
+        continue-on-error: true
+
+      - name: Linting / Import Sorting Check [ruff]
+        run: ruff ./backend
+        continue-on-error: true
+
+      - name: Check Static Typing [mypy]
+        run: mypy ./backend --config-file ./backend/pyproject.toml
+
+      - name: Check migrations [django]
+        run: |
+            python backend/manage.py makemigrations &&
+            python backend/manage.py migrate
