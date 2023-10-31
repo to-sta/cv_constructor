@@ -4,10 +4,10 @@ on:
     branches:
       - main
     types: [opened, reopened, synchronize]
-  workflow_run:
-    workflows: [pr_maintainer_checklist]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+
 
 env:
     # For testing only
