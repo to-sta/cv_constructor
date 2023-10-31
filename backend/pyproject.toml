@@ -66,6 +66,7 @@ ignore_missing_imports = true
 strict = true
 follow_imports = "skip"
 disallow_any_generics = false
+exclude = "cv.factory"
 
 [tool.django-stubs]
 django_settings_module = "core.settings"
