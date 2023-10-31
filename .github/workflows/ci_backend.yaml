@@ -2,11 +2,11 @@ name: ci_backend
 on:
   pull_request:
     branches:
-      - main
+      - master
     types: [opened, reopened, synchronize]
   push:
     branches:
-      - main
+      - master
 
 
 env:
