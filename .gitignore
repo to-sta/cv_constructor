@@ -179,3 +179,7 @@ cython_debug/
 package
 
 # End of https://www.toptal.com/developers/gitignore/api/svelte,django
+
+## added
+**/migrations/*
+!**migrations/__init__.py
