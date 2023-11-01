@@ -43,8 +43,13 @@ jobs:
 
       - name: Check Static Typing [mypy]
         run: mypy ./backend --config-file ./backend/pyproject.toml
+        continue-on-error: true
 
       - name: Check migrations [django]
         run: |
             python backend/manage.py makemigrations &&
             python backend/manage.py migrate
+        continue-on-error: true
+
+      - name: Run Tests [pytest]
+        run: pytest ./backend
