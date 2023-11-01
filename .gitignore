@@ -132,6 +132,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+!.env.example
+.env.*
 .env
 .venv
 env/
@@ -175,8 +177,16 @@ cython_debug/
 # gitignore template for the SvelteKit, frontend web component framework
 # website: https://kit.svelte.dev/
 
-.svelte-kit/
 package
+**/.DS_Store
+**/node_modules
+**/build
+**/.svelte-kit
+**/package
+**/.vercel
+**/.output
+**/vite.config.js.timestamp-*
+**/vite.config.ts.timestamp-*
 
 # End of https://www.toptal.com/developers/gitignore/api/svelte,django
 
