@@ -1,11 +1,11 @@
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 
 class CurriculumVitae(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     personal_information = models.ForeignKey(
         "PersonalInformation", on_delete=models.PROTECT
     )
@@ -22,7 +22,7 @@ class CurriculumVitae(models.Model):
 
 
 class PersonalInformation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, blank=False)
     last_name = models.CharField(max_length=50, blank=False)
     date_of_birth = models.DateField(blank=False)
@@ -36,7 +36,7 @@ class PersonalInformation(models.Model):
 
 
 class WorkExperience(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     company = models.CharField(max_length=255, blank=False)
     location = models.CharField(max_length=50, blank=False)
     state = models.CharField(max_length=50, blank=False)
@@ -50,7 +50,7 @@ class WorkExperience(models.Model):
 
 
 class AcademicExperience(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     institution = models.CharField(max_length=100)
     location = models.CharField(max_length=50)
     state = models.CharField(max_length=50, blank=False)
@@ -65,7 +65,7 @@ class AcademicExperience(models.Model):
 
 
 class Skill(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     skill = models.CharField(max_length=50, blank=False)
     rating = models.PositiveSmallIntegerField(
         blank=False, validators=[MaxValueValidator(5), MinValueValidator(1)], default=1
@@ -76,7 +76,7 @@ class Skill(models.Model):
 
 
 class Intrest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     intrest = models.CharField(max_length=50, blank=False)
 
     def __str__(self) -> str:
@@ -84,7 +84,7 @@ class Intrest(models.Model):
 
 
 class Reference(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=False)
     job_titel = models.CharField(max_length=50, blank=False)
     company = models.CharField(max_length=255, blank=False)
@@ -95,7 +95,7 @@ class Reference(models.Model):
 
 
 class Language(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     language = models.CharField(max_length=50, blank=False)
     # Should have choices rather than min and max, but i will keep it like this for now
     rating = models.PositiveSmallIntegerField(
