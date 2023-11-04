@@ -4,8 +4,9 @@ Factories for Tests
 import random
 
 import factory
-from django.contrib.auth.models import User
 from django.utils import timezone
+
+from authentication.models import UserModel as User
 
 from .models import (
     AcademicExperience,
@@ -23,7 +24,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
-    username = factory.Faker("name")
+    user_name = factory.Faker("name")
     email = factory.Faker("email")
     password = factory.Faker("password")
 
@@ -33,8 +34,8 @@ class PersonalInformationFactory(factory.django.DjangoModelFactory):
         model = PersonalInformation
 
     user = factory.SubFactory(UserFactory)
-    first_name = factory.LazyAttribute(lambda obj: obj.user.username.split()[0])
-    last_name = factory.LazyAttribute(lambda obj: obj.user.username.split()[1])
+    first_name = factory.LazyAttribute(lambda obj: obj.user.user_name.split()[0])
+    last_name = factory.LazyAttribute(lambda obj: obj.user.user_name.split()[1])
     date_of_birth = factory.Faker("date_object")
     email = factory.Faker("email")
     phone = factory.Faker("phone_number")
@@ -99,7 +100,7 @@ class ReferenceFactory(factory.django.DjangoModelFactory):
         model = Reference
 
     user = factory.SubFactory(UserFactory)
-    name = factory.LazyAttribute(lambda obj: obj.user.username)
+    name = factory.LazyAttribute(lambda obj: obj.user.user_name)
     job_titel = factory.Faker("job")
     company = factory.Faker("company")
     phone = factory.Faker("phone_number")
