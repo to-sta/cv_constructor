@@ -23,7 +23,6 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Install dependecies
       - name: Install dependencies
         working-directory: ./frontend
         run: |
