@@ -4,14 +4,15 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import RegisterUserSerializer
+from .serializers import RegisterNewUserSerializer
 
 
-class CustomUserCreate(APIView):
+class RegisterNewUserView(APIView):
     permission_classes = [AllowAny]
+    serializer_class = RegisterNewUserSerializer
 
     def post(self, request: Request) -> Response:
-        user_serializer = RegisterUserSerializer(data=request.data)
+        user_serializer = RegisterNewUserSerializer(data=request.data)
         if user_serializer.is_valid():
             new_user = user_serializer.save()
             if new_user:
