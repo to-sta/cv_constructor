@@ -74,3 +74,41 @@ Contributions to CV Constructor are always welcome. Check the open issues or if 
 
     * frontend: http://localhost:8000
     * backend: http://localhost:5174
+
+### Develop your contribution
+
+1. Checkout your local repo's main branch and pull the latest changes from the upstream, into your local repo:
+
+    ```bash
+    git checkout main
+    git pull
+    ```
+
+2. Create a seperate branch for your contribution:
+
+    ```bash
+    git branch <name-of-the-branch>
+    git checkout <name-of-the-branch>
+    ```
+
+3. Write some code :smiley:
+
+
+### Submit your Pull request
+
+1. Update your fork on GitHub to reflect your local changes
+
+    ```bash
+    git push -u origin <branch name>
+    ```
+
+2. Make a pull request on GitHub :rocket:
+
+    Please describe your contribution briefly.
+
+    * What have you implemented / changed?
+    * Did you test your changes?
+
+    We ran automated tests on every PR, these include linting, formatting and logic test for the backend and frontend.
+
+    You will likely be asked to edit or modify your PR in one way or another during this process. This is not an indictment of your work, but rather a strong signal that the community wants to merge your changes! Once approved, your changes may be merged!
