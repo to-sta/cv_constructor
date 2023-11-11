@@ -111,4 +111,8 @@ Contributions to CV Constructor are always welcome. Check the open issues or if 
 
     We ran automated tests on every PR, these include linting, formatting and logic test for the backend and frontend.
 
-    You will likely be asked to edit or modify your PR in one way or another during this process. This is not an indictment of your work, but rather a strong signal that the community wants to merge your changes! Once approved, your changes may be merged!
+    You will likely be asked to edit or modify your PR in one way or another during this process. This is not an indictment of your work, but rather a strong signal that the community wants to merge your changes!
+
+    Once approved, your changes may be merged!
+
+    :tada: :tada: :tada:
