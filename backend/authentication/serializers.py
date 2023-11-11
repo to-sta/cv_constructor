@@ -23,6 +23,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
 
 class UserLoginSerializer(serializers.Serializer):
+    user_name = serializers.CharField(required=False)
     email = serializers.EmailField()
     password = serializers.CharField()
 
@@ -35,10 +36,11 @@ class UserLoginSerializer(serializers.Serializer):
     def to_representation(self, instance: OrderedDict) -> OrderedDict:
         ret: OrderedDict = super().to_representation(instance)
         ret.pop("password", None)
+        ret.pop("email", None)
         return ret
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("email", "username")
+        fields = ("email", "user_name")
