@@ -31,3 +31,7 @@ jobs:
       - name: Svelte Check
         working-directory: ./frontend
         run: pnpm svelte-check
+
+      - name: Svelte Prettier and ESlint
+        working-directory: ./frontend
+        run: pnpm lint
