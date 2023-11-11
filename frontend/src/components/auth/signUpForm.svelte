@@ -142,6 +142,6 @@
 				<p class="text-error-200">{formErrors.password.match}</p>
 			{/if}
 		</fieldset>
-		<Button text="Submit" disabled={formDisabled}/>
+		<Button text="Submit" disabled={formDisabled} />
 	</div>
 </form>

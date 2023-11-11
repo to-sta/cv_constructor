@@ -39,7 +39,7 @@
 	}
 
 	async function handleLogin() {
-        console.log(formDisabled, validPassword, validEmail, formValid())
+		console.log(formDisabled, validPassword, validEmail, formValid());
 		if (formValid() === true) {
 			const response = await fetch(`${variables.API_ROOT}/api/user/login/`, {
 				method: "POST",
