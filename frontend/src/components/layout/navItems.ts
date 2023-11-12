@@ -1,4 +1,4 @@
 export type NavItemType = {
-    text: string;
-    path: string;
-}
+	text: string;
+	path: string;
+};

@@ -57,13 +57,13 @@
 			formDisabled = false;
 			return true;
 		} else {
-			formDisabled = true
+			formDisabled = true;
 			return false;
 		}
 	}
 
 	async function handleSignUp() {
-		console.log(validUsername, validEmail, validPassword, validPasswordMatch, formValid())
+		console.log(validUsername, validEmail, validPassword, validPasswordMatch, formValid());
 		if (formValid() === true) {
 			const response = await fetch(`${variables.API_ROOT}/api/user/register/`, {
 				method: "POST",
