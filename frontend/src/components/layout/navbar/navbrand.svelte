@@ -2,7 +2,7 @@
 	let text: string = "CV Constructor";
 </script>
 
-<a href="https://flowbite.com/" class="flex items-center">
+<a href="/" class="flex items-center">
 	<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 32 32"
 		><path
 			fill="currentColor"

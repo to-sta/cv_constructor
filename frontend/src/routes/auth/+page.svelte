@@ -1,8 +1,8 @@
 <script lang="ts">
-	import LoginForm from "../components/auth/loginForm.svelte";
-	import SignUpForm from "../components/auth/signUpForm.svelte";
-	import Switch from "../components/auth/switch.svelte";
-	import auth from "../stores/auth";
+	import LoginForm from "../../components/auth/loginForm.svelte";
+	import SignUpForm from "../../components/auth/signUpForm.svelte";
+	import Switch from "../../components/auth/switch.svelte";
+	import auth from "../../stores/auth";
 
 	let loginSignUp: boolean;
 	auth.subscribe((value) => (loginSignUp = value));

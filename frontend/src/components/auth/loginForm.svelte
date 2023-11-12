@@ -14,27 +14,32 @@
 	function validateEmail() {
 		let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 		if (email.match(validRegex)) {
-			console.log("Email is valid");
-			return (validEmail = true);
+			validEmail = true
+			return true;
 		} else {
-			return (validEmail = false);
+			validEmail = false;
+			return false;
 		}
 	}
 
 	function validatePassword() {
 		// Checks if the password has more than 8 characters
 		if (password.length > 8) {
-			return (validPassword = true);
+			validPassword = true;
+			return true;
 		} else {
-			return (validPassword = false);
+			validPassword = false;
+			return false;
 		}
 	}
 
 	function formValid() {
 		if (validEmail && validPassword) {
-			return (formDisabled = false);
+			formDisabled = false;
+			return true;
 		} else {
-			return (formDisabled = true);
+			formDisabled = true;
+			return false;
 		}
 	}
 
@@ -52,7 +57,7 @@
 
 			if (response.status === 200) {
 				user.update(() => ({ ...data }));
-				goto(`/home/user/${data.user_name}`);
+				goto(`/home/${data.user_name}`);
 			}
 		}
 	}

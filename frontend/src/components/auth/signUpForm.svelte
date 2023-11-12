@@ -54,13 +54,16 @@
 
 	function formValid() {
 		if (validUsername && validEmail && validPassword && validPasswordMatch) {
-			return (formDisabled = false);
+			formDisabled = false;
+			return true;
 		} else {
-			return (formDisabled = true);
+			formDisabled = true
+			return false;
 		}
 	}
 
 	async function handleSignUp() {
+		console.log(validUsername, validEmail, validPassword, validPasswordMatch, formValid())
 		if (formValid() === true) {
 			const response = await fetch(`${variables.API_ROOT}/api/user/register/`, {
 				method: "POST",

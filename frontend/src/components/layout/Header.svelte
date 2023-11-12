@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { NavItemType } from "./navItems";
 	import Navbrand from "./navbar/navbrand.svelte";
 
-	export let navitems: string[] = [];
+	export let navitems: NavItemType[] = [];
 </script>
 
 <header>
@@ -40,9 +41,9 @@
 					{#each navitems as navitem}
 						<li>
 							<a
-								href="/{navitem}"
+								href="/{navitem.path}"
 								class="block py-2 pl-3 pr-4 md:bg-transparent md:p-0"
-								aria-current="page">{navitem}</a
+								aria-current="page">{navitem.text}</a
 							>
 						</li>
 					{/each}
