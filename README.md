@@ -72,8 +72,8 @@ Contributions to CV Constructor are always welcome. Check the open issues or if 
     ```
 8. Then you are able to visit the frontend and backend on:
 
-    * frontend: http://localhost:8000
-    * backend: http://localhost:5174
+    * frontend: http://localhost:5174
+    * backend: http://localhost:8000
 
 ### Develop your contribution
 
