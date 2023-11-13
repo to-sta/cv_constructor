@@ -35,7 +35,6 @@ class UserLoginView(APIView):
         if serializer.is_valid(raise_exception=True):
             user: UserModel = serializer.check_user(request.data)
             login(request, user)
-            print(user)
             serializer = UserLoginSerializer(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
