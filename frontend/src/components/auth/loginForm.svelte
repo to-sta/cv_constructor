@@ -51,13 +51,14 @@
 				headers: {
 					"Content-Type": "application/json"
 				},
+				credentials: "same-origin",
 				body: JSON.stringify({ email: email, password: password })
 			});
 			let data = await response.json();
 
 			if (response.status === 200) {
 				user.update(() => ({ ...data }));
-				goto(`/home/${data.user_name}`);
+				goto(`/dashboard/${data.user_name}`);
 			}
 		}
 	}
