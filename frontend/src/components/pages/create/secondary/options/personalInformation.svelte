@@ -74,7 +74,7 @@
 					/>
 				</fieldset>
 			</div>
-			<Button text="add" />
+			<Button text="submit" />
 		</div>
 	</form>
 </div>

@@ -6,39 +6,39 @@
 	import AcademicExperience from "./options/academicExperience.svelte";
 	import Skill from "./options/skill.svelte";
 	import Intrest from "./options/intrest.svelte";
+	import { sidebarOption } from "../../../../stores/sidebarOption";
 
-	export let choice: string = "PersonalInformation";
-	let menuClosed: boolean = false;
+	let menuOpen: boolean = true;
 </script>
 
 <div class="flex">
 	<div class="relative flex flex-col h-screen gap-4 p-4 pt-8 bg-primary-200">
-		<div class={menuClosed ? "" : "hidden"}>
-			{#if choice === "PersonalInformation"}
+		<div class="overflow-y-auto overflow-x-hidden pr-4 scroll-m-10 {menuOpen ? '' : 'hidden'}">
+			{#if $sidebarOption === "PersonalInformation"}
 				<PersonalInformation />
 			{/if}
-			{#if choice === "WorkExperience"}
+			{#if $sidebarOption === "WorkExperience"}
 				<Workexperience />
 			{/if}
-			{#if choice === "Language"}
+			{#if $sidebarOption === "Language"}
 				<Language />
 			{/if}
-			{#if choice === "Reference"}
+			{#if $sidebarOption === "Reference"}
 				<Reference />
 			{/if}
-			{#if choice === "AcademicExperience"}
+			{#if $sidebarOption === "AcademicExperience"}
 				<AcademicExperience />
 			{/if}
-			{#if choice === "Skill"}
+			{#if $sidebarOption === "Skill"}
 				<Skill />
 			{/if}
-			{#if choice === "Intrest"}
+			{#if $sidebarOption === "Intrest"}
 				<Intrest />
 			{/if}
 		</div>
 		<button
 			class="absolute flex items-center justify-center w-8 h-8 bg-black rounded-full -right-4"
-			on:click={() => (menuClosed = !menuClosed)}
+			on:click={() => (menuOpen = !menuOpen)}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
