@@ -15,6 +15,9 @@
 **CV Constructor** is a software that simplifies the process of creating a CV (Curriculum Vitae). With CV Constructor, users can input their information and choose from a variety of templates and colors to create their CV. The software is designed to be user-friendly and intuitive, making it easy for anyone to create a professional-looking CV in no time.
 
 
+Here is an early stage example of the editor.
+
+![Alt text](docs/readme/example_use_case.png)
 ## Contributing
 
 Contributions to CV Constructor are always welcome. Check the open issues or if you suggestions create an issue.
