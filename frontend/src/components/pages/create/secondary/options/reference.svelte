@@ -11,13 +11,13 @@
 <div>
 	<form>
 		<div class="space-y-4">
-			{#each Array(numbers) as _}
+			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
 						<label for="name" class="font-oswald">Name:</label>
 						<input
 							id="name"
-							name="name"
+							name="name_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="Berlin, Germany"
 							type="text"
@@ -27,7 +27,7 @@
 						<label for="job_titel" class="font-oswald">Job Title:</label>
 						<input
 							id="job_titel"
-							name="job_titel"
+							name="job_titel_{id}"
 							class="py-1 pl-2 pr-1 bg-white rounded-lg opacity-75"
 							placeholder="Software Engineer"
 							type="text"
@@ -39,7 +39,7 @@
 						<label for="company" class="font-oswald">Company:</label>
 						<input
 							id="company"
-							name="company"
+							name="company_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="Company Inc."
 							type="text"
@@ -49,7 +49,7 @@
 						<label for="phone" class="font-oswald">Phone:</label>
 						<input
 							id="phone"
-							name="phone"
+							name="phone_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="example@provider.com"
 							type="tel"

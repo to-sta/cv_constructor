@@ -2,7 +2,7 @@
 	import { sidebarOption } from "../../../../stores/sidebarOption";
 
 	const updateSidebarOption = (clicked: string) => {
-		sidebarOption.update((value) => (value = clicked));
+		sidebarOption.update(() => clicked);
 	};
 </script>
 
@@ -10,7 +10,7 @@
 	<div>
 		<div class="flex flex-col h-screen gap-4 p-4 pt-8 bg-primary-100">
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("PersonalInformation");
 				}}
@@ -23,7 +23,7 @@
 				>
 			</button>
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("WorkExperience");
 				}}
@@ -36,7 +36,7 @@
 				>
 			</button>
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("AcademicExperience");
 				}}
@@ -51,7 +51,7 @@
 				>
 			</button>
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("Skill");
 				}}
@@ -61,7 +61,7 @@
 				>
 			</button>
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("Intrest");
 				}}
@@ -74,7 +74,7 @@
 				>
 			</button>
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("Reference");
 				}}
@@ -87,7 +87,7 @@
 				>
 			</button>
 			<button
-				class="p-2 rounded-xl bg-primary-300"
+				class="p-2 rounded-xl bg-primary-300 hover:bg-primary-400"
 				on:click={() => {
 					updateSidebarOption("Language");
 				}}

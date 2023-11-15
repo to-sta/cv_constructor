@@ -11,13 +11,13 @@
 <div>
 	<form>
 		<div class="space-y-4">
-			{#each Array(numbers) as _}
+			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="first_name" class="font-oswald">Language</label>
+						<label for="intrest" class="font-oswald">Intrest</label>
 						<input
-							id="first_name"
-							name="first_name"
+							id="intrest"
+							name="intrest_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="Football"
 							type="text"

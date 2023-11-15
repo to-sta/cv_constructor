@@ -11,24 +11,24 @@
 <div>
 	<form>
 		<div class="space-y-4">
-			{#each Array(numbers) as _}
+			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="first_name" class="font-oswald">Language</label>
+						<label for="language" class="font-oswald">Language</label>
 						<input
-							id="first_name"
-							name="first_name"
+							id="language"
+							name="language_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="English"
 							type="text"
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="last_name" class="font-oswald">Rating:</label>
+						<label for="rating" class="font-oswald">Rating:</label>
 						<input
-							id="last_name"
+							id="rating"
 							max="5"
-							name="last_name"
+							name="rating_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="Mustermann"
 							type="range"
