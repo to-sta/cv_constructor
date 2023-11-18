@@ -141,7 +141,19 @@ AUTH_USER_MODEL = "authentication.UserModel"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+# Configuration in order to Set-Cookie by the frontend request
 CORS_ALLOWED_ORIGINS = [
     f"http://localhost:{FRONTEND_PORT}",
     f"http://127.0.0.1:{FRONTEND_PORT}",
 ]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8000",
+]
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SAMESITE = "None"
