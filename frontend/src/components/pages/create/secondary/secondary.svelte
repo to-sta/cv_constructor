@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PersonalInformation from "./options/personalInformation.svelte";
-	import Workexperience from "./options/workexperience.svelte";
+	import WorkExperience from "./options/workexperience.svelte";
 	import Language from "./options/language.svelte";
 	import Reference from "./options/reference.svelte";
 	import AcademicExperience from "./options/academicExperience.svelte";
@@ -11,7 +11,7 @@
 
 	const components: any = {
 		PersonalInformation,
-		Workexperience,
+		WorkExperience,
 		Language,
 		Reference,
 		AcademicExperience,

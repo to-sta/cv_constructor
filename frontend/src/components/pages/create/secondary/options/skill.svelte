@@ -7,8 +7,13 @@
 
 	let skill: string[] = [];
 	let rating: string[] = [];
+	let numbers: number = 1;
 
 	async function handleForm() {
+		if (skill.length === 0) {
+			return;
+		}
+
 		let objects: { skill: string; rating: string }[] = [];
 		for (let i = 0; i < skill.length; i++) {
 			objects.push({ skill: skill[i], rating: rating[i] });
@@ -36,7 +41,6 @@
 		}
 	}
 
-	let numbers: number = 1;
 </script>
 
 <div>

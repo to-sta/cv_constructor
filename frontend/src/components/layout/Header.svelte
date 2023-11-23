@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { NavItemType } from "./navItems";
+	import type { NavItemType } from "../../lib/types/navItems";
 	import Navbrand from "./navbar/navbrand.svelte";
 	import Cookies from "js-cookie";
 	import { variables } from "$lib/dotenv/dotenv";

@@ -10,5 +10,7 @@ import { goto } from "$app/navigation";
 if (browser) {
 	if (get(user) == null) {
 		goto("/auth");
+	} else {
+		goto("/dashboard");
 	}
 }
