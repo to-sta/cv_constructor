@@ -1,5 +1,5 @@
 <script lang="ts">
-	import user from "../../../stores/user";
+	import user from "../../stores/user";
 </script>
 
 <section class="max-w-screen-xl px-4 pb-4 mx-auto">
@@ -10,7 +10,7 @@
 		<div
 			class="flex flex-col items-center justify-center rounded-md shadow-md bg-primary-100 shadow-black/30 w-80 h-96"
 		>
-			<a href="/dashboard/{$user}/create">
+			<a href="/create">
 				<div>
 					<svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24"
 						><path

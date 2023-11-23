@@ -10,6 +10,10 @@
 	import MenuExpandButton from "../../../buttons/menuExpandButton.svelte";
 
 	let menuOpen: boolean = true;
+
+	$: if ($sidebarOption) {
+		menuOpen = true;
+	}
 </script>
 
 <div class="flex">

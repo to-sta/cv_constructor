@@ -24,7 +24,7 @@
 				<!-- Form -->
 				<div class="flex flex-col w-full h-full gap-6">
 					<div class="flex justify-center">
-						<div class="p-2 rounded-full bg-white/30">
+						<div class="p-2 rounded-full bg-primary-300">
 							<svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24"
 								><path
 									fill="currentColor"

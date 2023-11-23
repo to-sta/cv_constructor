@@ -28,7 +28,6 @@
 	function validateEmail() {
 		let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 		if (email.match(validRegex)) {
-			console.log("Email is valid");
 			return (validEmail = true);
 		} else {
 			return (validEmail = false);
@@ -63,7 +62,6 @@
 	}
 
 	async function handleSignUp() {
-		console.log(validUsername, validEmail, validPassword, validPasswordMatch, formValid());
 		if (formValid() === true) {
 			const response = await fetch(`${variables.API_ROOT}/api/user/register/`, {
 				method: "POST",
@@ -79,7 +77,7 @@
 
 			if (response.status < 299) {
 				auth.update((val) => !val);
-				console.log(auth);
+
 			}
 		}
 	}

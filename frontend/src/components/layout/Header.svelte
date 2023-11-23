@@ -1,12 +1,35 @@
 <script lang="ts">
 	import type { NavItemType } from "./navItems";
 	import Navbrand from "./navbar/navbrand.svelte";
+	import Cookies from "js-cookie";
+	import { variables } from "$lib/dotenv/dotenv";
+	import user from "../../stores/user";
 
 	export let navitems: NavItemType[] = [];
+	let isOpen: boolean = false;
+
+	async function handleLogout() {
+		let csrftoken = Cookies.get("csrftoken");
+
+		const response = await fetch(`${variables.API_ROOT}/api/user/logout/`, {
+			method: "POST",
+			mode: "cors",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+				"X-CSRFToken": csrftoken
+			}
+		});
+
+		if (response.status == 200) {
+			localStorage.removeItem("user");
+			user.set(null);
+		}
+	}
 </script>
 
 <header>
-	<nav class="bg-transparent">
+	<nav class="bg-transparent shadow-md">
 		<div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
 			<!-- Navbar Brand -->
 			<Navbrand />
@@ -14,9 +37,10 @@
 			<button
 				data-collapse-toggle="navbar-default"
 				type="button"
-				class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+				class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-black rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-primary-400 hover:bg-primary-300"
 				aria-controls="navbar-default"
 				aria-expanded="false"
+				on:click={() => (isOpen = !isOpen)}
 			>
 				<span class="sr-only">Open main menu</span>
 				<svg
@@ -36,32 +60,26 @@
 				</svg>
 			</button>
 			<!-- Navbar Links -->
-			<div class="hidden w-full md:block md:w-auto" id="navbar-default">
+			<div class="{isOpen ? '' : 'hidden'} w-full md:block md:w-auto" id="navbar-default">
 				<ul class="flex flex-col p-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0">
 					{#each navitems as navitem}
 						<li>
 							<a
 								href="/{navitem.path}"
-								class="block py-2 pl-3 pr-4 md:bg-transparent md:p-0"
+								class="block py-2 pl-3 pr-4 rounded-md md:rounded-none md:bg-transparent md:p-0 hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-400"
 								aria-current="page">{navitem.text}</a
 							>
 						</li>
 					{/each}
+					<li>
+						<a
+							class="block py-2 pl-3 pr-4 rounded-md md:rounded-none md:bg-transparent md:p-0 hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-400"
+							href="/auth"
+							on:click={handleLogout}>Logout</a
+						>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<!-- <nav>
-		<ul>
-			<li aria-current={$page.url.pathname === "/" ? "page" : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === "/about" ? "page" : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith("/sverdle") ? "page" : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-	</nav> -->
 </header>

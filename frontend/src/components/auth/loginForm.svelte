@@ -4,6 +4,7 @@
 	import { variables } from "$lib/dotenv/dotenv";
 	import Button from "../buttons/button.svelte";
 	import { formErrors } from "./formErrors";
+	import Cookies from "js-cookie";
 
 	let email: string = "";
 	let password: string = "";
@@ -44,21 +45,24 @@
 	}
 
 	async function handleLogin() {
-		console.log(formDisabled, validPassword, validEmail, formValid());
+		let csrftoken = Cookies.get("csrftoken")
 		if (formValid() === true) {
 			const response = await fetch(`${variables.API_ROOT}/api/user/login/`, {
 				method: "POST",
+				mode: "cors",
+				credentials: "include",
 				headers: {
-					"Content-Type": "application/json"
+					"Content-Type": "application/json",
+					"X-CSRFToken": csrftoken,
 				},
-				credentials: "same-origin",
 				body: JSON.stringify({ email: email, password: password })
 			});
 			let data = await response.json();
 
 			if (response.status === 200) {
 				user.update(() => ({ ...data }));
-				goto(`/dashboard/${data.user_name}`);
+				localStorage.setItem("user", JSON.stringify($user))
+				goto(`/dashboard/`);
 			}
 		}
 	}

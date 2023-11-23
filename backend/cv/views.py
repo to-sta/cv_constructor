@@ -61,12 +61,9 @@ class SkillViewSet(viewsets.ModelViewSet):
     serializer_class = SkillSerializer
 
     def create(self, request: Request, *args, **kwargs):
-        print(request.data)
         serializer = self.get_serializer(
             data=request.data, many=isinstance(request.data, list)
         )
-        print(serializer.is_valid())
-        print(serializer.errors)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -75,7 +72,6 @@ class SkillViewSet(viewsets.ModelViewSet):
         )
 
     def perform_create(self, serializer) -> None:
-        print(serializer.data)
         serializer.save(user=self.request.user)
 
 
