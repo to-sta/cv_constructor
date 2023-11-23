@@ -3,7 +3,7 @@
 	import Primary from "./primary/primary.svelte";
 </script>
 
-<aside class="z-10 flex">
+<aside class="z-40 flex">
 	<Primary />
 	<Secondary />
 </aside>

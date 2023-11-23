@@ -9,6 +9,16 @@
 	import { sidebarOption } from "../../../../stores/sidebarOption";
 	import MenuExpandButton from "../../../buttons/menuExpandButton.svelte";
 
+	const components:any = {
+		PersonalInformation,
+		Workexperience,
+		Language,
+		Reference,
+		AcademicExperience,
+		Skill,
+		Intrest
+	};
+
 	let menuOpen: boolean = true;
 
 	$: if ($sidebarOption) {
@@ -19,30 +29,10 @@
 <div class="flex">
 	<div class="relative flex flex-col h-screen gap-4 p-4 pt-8 bg-primary-200">
 		<div class="overflow-y-auto overflow-x-hidden pr-4 scroll-m-10 {menuOpen ? '' : 'hidden'}">
-			{#if $sidebarOption === "PersonalInformation"}
-				<PersonalInformation />
-			{/if}
-			{#if $sidebarOption === "WorkExperience"}
-				<Workexperience />
-			{/if}
-			{#if $sidebarOption === "Language"}
-				<Language />
-			{/if}
-			{#if $sidebarOption === "Reference"}
-				<Reference />
-			{/if}
-			{#if $sidebarOption === "AcademicExperience"}
-				<AcademicExperience />
-			{/if}
-			{#if $sidebarOption === "Skill"}
-				<Skill />
-			{/if}
-			{#if $sidebarOption === "Intrest"}
-				<Intrest />
-			{/if}
+			<svelte:component this={components[$sidebarOption]} />
 		</div>
 		<button
-			class="absolute flex items-center justify-center w-8 h-8 bg-black rounded-full -right-4 hover:scale-110"
+			class="absolute flex items-center justify-center w-8 h-8 bg-black rounded-full hover:bg-secondary-100 -right-4"
 			on:click={() => (menuOpen = !menuOpen)}
 		>
 			<MenuExpandButton isOpen={menuOpen} />
