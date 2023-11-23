@@ -26,6 +26,7 @@ class UserLoginSerializer(serializers.Serializer):
     user_name = serializers.CharField(required=False)
     email = serializers.EmailField()
     password = serializers.CharField()
+    id = serializers.CharField(required=False)
 
     def check_user(self, clean_data: dict[str, str]) -> AbstractBaseUser:
         user = authenticate(email=clean_data["email"], password=clean_data["password"])

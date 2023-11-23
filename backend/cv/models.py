@@ -74,18 +74,24 @@ class Skill(models.Model):
     def __str__(self) -> str:
         return f"{self.user} | {self.skill}"
 
+    class Meta:
+        unique_together = [["user", "skill"]]
+
 
 class Intrest(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    intrest = models.CharField(max_length=50, blank=False)
+    intrest = models.CharField(max_length=50, blank=False, unique=True)
 
     def __str__(self) -> str:
         return f"{self.user} | {self.intrest}"
 
+    class Meta:
+        unique_together = [["user", "intrest"]]
+
 
 class Reference(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, blank=False)
+    name = models.CharField(max_length=100, blank=False, unique=True)
     job_titel = models.CharField(max_length=50, blank=False)
     company = models.CharField(max_length=255, blank=False)
     phone = PhoneNumberField()
@@ -93,10 +99,13 @@ class Reference(models.Model):
     def __str__(self) -> str:
         return f"{self.user} | {self.name} - {self.company}"
 
+    class Meta:
+        unique_together = [["user", "name"]]
+
 
 class Language(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    language = models.CharField(max_length=50, blank=False)
+    language = models.CharField(max_length=50, blank=False, unique=True)
     # Should have choices rather than min and max, but i will keep it like this for now
     rating = models.PositiveSmallIntegerField(
         blank=False, validators=[MaxValueValidator(5), MinValueValidator(1)], default=1
@@ -104,3 +113,6 @@ class Language(models.Model):
 
     def __str__(self) -> str:
         return f"{self.user} | {self.language}"
+
+    class Meta:
+        unique_together = [["user", "language"]]

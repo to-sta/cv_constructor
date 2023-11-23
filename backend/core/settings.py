@@ -147,7 +147,7 @@ CORS_ALLOWED_ORIGINS = [
     f"http://localhost:{FRONTEND_PORT}",
     f"http://127.0.0.1:{FRONTEND_PORT}",
 ]
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"]
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8000",
