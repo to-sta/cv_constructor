@@ -45,7 +45,11 @@
 	}
 
 	async function handleLogin() {
-		let csrftoken = Cookies.get("csrftoken")
+		let csrftoken: string | undefined = Cookies.get("csrftoken");
+		if (csrftoken == undefined) {
+			return (csrftoken = "");
+		}
+
 		if (formValid() === true) {
 			const response = await fetch(`${variables.API_ROOT}/api/user/login/`, {
 				method: "POST",
@@ -53,7 +57,7 @@
 				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
-					"X-CSRFToken": csrftoken,
+					"X-CSRFToken": csrftoken
 				},
 				body: JSON.stringify({ email: email, password: password })
 			});
@@ -61,7 +65,7 @@
 
 			if (response.status === 200) {
 				user.update(() => ({ ...data }));
-				localStorage.setItem("user", JSON.stringify($user))
+				localStorage.setItem("user", JSON.stringify($user));
 				goto(`/dashboard/`);
 			}
 		}

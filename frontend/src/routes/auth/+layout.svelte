@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex flex-col justify-between min-h-screen">
-	<div></div>
+	<div />
 	<main>
 		<slot />
 	</main>

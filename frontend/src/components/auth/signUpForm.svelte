@@ -77,7 +77,6 @@
 
 			if (response.status < 299) {
 				auth.update((val) => !val);
-
 			}
 		}
 	}

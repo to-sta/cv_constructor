@@ -14,7 +14,11 @@
 			objects.push({ skill: skill[i], rating: rating[i] });
 		}
 
-		let csrftoken = Cookies.get("csrftoken");
+		let csrftoken: string | undefined = Cookies.get("csrftoken");
+		if (csrftoken == undefined) {
+			return (csrftoken = "");
+		}
+
 		const response = await fetch(`${variables.API_ROOT}/api/skill/`, {
 			method: "POST",
 			mode: "cors",
@@ -23,8 +27,6 @@
 				"Content-Type": "application/json",
 				"X-CSRFToken": csrftoken
 			},
-			// User as pk must be sent back to the API, this might need to be changed in the backend
-			// rating value is not bind
 			body: JSON.stringify(objects)
 		});
 		let data = await response.json();

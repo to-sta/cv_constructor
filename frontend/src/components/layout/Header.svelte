@@ -9,7 +9,11 @@
 	let isOpen: boolean = false;
 
 	async function handleLogout() {
-		let csrftoken = Cookies.get("csrftoken");
+		let csrftoken: string | undefined = Cookies.get("csrftoken");
+
+		if (csrftoken == undefined) {
+			return (csrftoken = "");
+		}
 
 		const response = await fetch(`${variables.API_ROOT}/api/user/logout/`, {
 			method: "POST",
