@@ -6,7 +6,7 @@ from rest_framework.exceptions import ValidationError
 from .models import (
     AcademicExperience,
     CurriculumVitae,
-    Intrest,
+    Interest,
     Language,
     PersonalInformation,
     Reference,
@@ -53,17 +53,17 @@ class SkillSerializer(serializers.ModelSerializer):
         return attrs
 
 
-class IntrestSerializer(serializers.ModelSerializer):
+class InterestSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Intrest
+        model = Interest
         exclude = ["user"]
 
     def validate(self, attrs: Any) -> Any:
         user = self.context["request"].user
-        intrest = attrs["intrest"]
+        interest = attrs["interest"]
 
-        if Skill.objects.filter(user=user, intrest=intrest).exists():
-            raise ValidationError("A record with this user and intrest already exists")
+        if Skill.objects.filter(user=user, interest=interest).exists():
+            raise ValidationError("A record with this user and interest already exists")
         return attrs
 
 

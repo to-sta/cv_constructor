@@ -6,7 +6,7 @@
 </script>
 
 <div>
-	<h1 class="text-3xl font-bold border-b-2 border-black font-oswald">Intrests</h1>
+	<h1 class="text-3xl font-bold border-b-2 border-black font-oswald">Interests</h1>
 </div>
 <div>
 	<form>
@@ -14,10 +14,10 @@
 			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="intrest" class="font-oswald">Intrest</label>
+						<label for="interest" class="font-oswald">Interest</label>
 						<input
-							id="intrest"
-							name="intrest_{id}"
+							id="interest"
+							name="interest_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="Football"
 							type="text"

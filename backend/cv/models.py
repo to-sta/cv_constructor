@@ -11,7 +11,7 @@ class CurriculumVitae(models.Model):
     )
     work_experience = models.ForeignKey("WorkExperience", on_delete=models.PROTECT)
     skill = models.ForeignKey("Skill", on_delete=models.PROTECT)
-    intrest = models.ForeignKey("Intrest", on_delete=models.PROTECT)
+    interest = models.ForeignKey("Inetrest", on_delete=models.PROTECT)
     reference = models.ForeignKey("Reference", on_delete=models.PROTECT)
     language = models.ForeignKey("Language", on_delete=models.PROTECT)
     creation_date = models.DateTimeField(auto_now_add=True)
@@ -78,15 +78,15 @@ class Skill(models.Model):
         unique_together = [["user", "skill"]]
 
 
-class Intrest(models.Model):
+class Interest(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    intrest = models.CharField(max_length=50, blank=False, unique=True)
+    interest = models.CharField(max_length=50, blank=False, unique=True)
 
     def __str__(self) -> str:
-        return f"{self.user} | {self.intrest}"
+        return f"{self.user} | {self.interest}"
 
     class Meta:
-        unique_together = [["user", "intrest"]]
+        unique_together = [["user", "interest"]]
 
 
 class Reference(models.Model):

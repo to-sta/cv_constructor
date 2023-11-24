@@ -4,6 +4,7 @@
 	import user from "../../../../../stores/user";
 	import { variables } from "$lib/dotenv/dotenv";
 	import Cookies from "js-cookie";
+	import Icon from "../../../../icons/icon.svelte";
 
 	let skill: string[] = [];
 	let rating: string[] = [];
@@ -55,19 +56,11 @@
 					{#if id > 0}
 						<div class="absolute right-0">
 							<div
-								class="flex items-center justify-center w-8 h-8 bg-black rounded-full fill-primary-300"
+								class="flex items-center justify-center w-8 h-8 bg-black rounded-full text-primary-300 fill-primary-300 hover:bg-secondary-100"
 							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="0.75em"
-									height="1em"
-									viewBox="0 0 12 16"
-									><path
-										fill-rule="evenodd"
-										d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"
-										fill="current"
-									/></svg
-								>
+							<button>
+								<Icon icon="Delete" height="1em" width="1em" />
+							</button>
 							</div>
 						</div>
 					{/if}
@@ -96,13 +89,11 @@
 					</fieldset>
 				</div>
 			{/each}
-
 			<div class="flex items-center justify-center">
 				<button on:click|preventDefault={() => numbers++}>
 					<AddButton />
 				</button>
 			</div>
-
 			<Button text="submit" />
 		</div>
 	</form>

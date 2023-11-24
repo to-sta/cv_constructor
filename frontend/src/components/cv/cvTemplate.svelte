@@ -1,4 +1,29 @@
 <script lang="ts">
+	let firstName = "";
+	let lastName = "";
+	let dateOfBirth = "";
+	let email = "";
+	let phone = "";
+	let image = "";
+	let language = {
+		language: "German",
+		rating: "4"
+	};
+	let reference = {
+		name: "",
+		jobTite: "",
+		company: "",
+		phone: ""
+	};
+	let skill = {
+		skill: "",
+		rating: ""
+	};
+	let interest = {
+		interest: "",
+		rating: ""
+	};
+
 </script>
 
 <!-- EXAMPLE CV

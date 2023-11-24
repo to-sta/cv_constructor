@@ -6,7 +6,7 @@ from .factory import (
     AcademicExperienceFactory,
     SkillFactory,
     LanguageFactory,
-    IntrestFactory,
+    InterestFactory,
     ReferenceFactory,
 )
 
@@ -17,13 +17,13 @@ def test_str_methods() -> None:
     work_experience = WorkExperienceFactory.build()
     academic_experience = AcademicExperienceFactory.build()
     skill = SkillFactory.build()
-    intrest = IntrestFactory.build()
+    interest = InterestFactory.build()
     reference = ReferenceFactory.build()
 
 
 
     language = LanguageFactory.build()
-    intrest = IntrestFactory.build()
+    interest = InterestFactory.build()
     reference = ReferenceFactory.build()
     assert str(cv) == f"{cv.user} | {cv.creation_date}, last update: {cv.last_updated}"
     assert (
@@ -39,6 +39,6 @@ def test_str_methods() -> None:
         == f"{academic_experience.user} | {academic_experience.start_date} -> {academic_experience.end_date}: {academic_experience.institution}"
     )
     assert str(skill) == f"{skill.user} | {skill.skill}"
-    assert str(intrest) == f"{intrest.user} | {intrest.intrest}"
+    assert str(interest) == f"{interest.user} | {interest.interest}"
     assert str(reference) == f"{reference.user} | {reference.name} - {reference.company}"
     assert str(language) == f"{language.user} | {language.language}"

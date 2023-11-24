@@ -5,7 +5,7 @@
 	import Reference from "./options/reference.svelte";
 	import AcademicExperience from "./options/academicExperience.svelte";
 	import Skill from "./options/skill.svelte";
-	import Intrest from "./options/intrest.svelte";
+	import Interest from "./options/interest.svelte";
 	import { sidebarOption } from "../../../../stores/sidebarOption";
 	import MenuExpandButton from "../../../buttons/menuExpandButton.svelte";
 
@@ -16,7 +16,7 @@
 		Reference,
 		AcademicExperience,
 		Skill,
-		Intrest
+		Interest
 	};
 
 	let menuOpen: boolean = true;

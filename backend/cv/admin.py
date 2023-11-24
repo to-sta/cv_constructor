@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import (
     CurriculumVitae,
-    Intrest,
+    Interest,
     Language,
     PersonalInformation,
     Reference,
@@ -15,6 +15,6 @@ admin.site.register(CurriculumVitae)
 admin.site.register(PersonalInformation)
 admin.site.register(WorkExperience)
 admin.site.register(Skill)
-admin.site.register(Intrest)
+admin.site.register(Interest)
 admin.site.register(Reference)
 admin.site.register(Language)

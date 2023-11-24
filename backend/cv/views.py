@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import (
     AcademicExperience,
     CurriculumVitae,
-    Intrest,
+    Interest,
     Language,
     PersonalInformation,
     Reference,
@@ -15,7 +15,7 @@ from .models import (
 from .serializers import (
     AcademicExperienceSerializer,
     CurriculumVitaeSerializer,
-    IntrestSerializer,
+    InterestSerializer,
     LanguageSerializer,
     PersonalInformationSerializer,
     ReferenceSerializer,
@@ -75,9 +75,9 @@ class SkillViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-class IntrestViewSet(viewsets.ModelViewSet):
-    queryset = Intrest.objects.all()
-    serializer_class = IntrestSerializer
+class InterestViewSet(viewsets.ModelViewSet):
+    queryset = Interest.objects.all()
+    serializer_class = InterestSerializer
 
     def perform_create(self, serializer) -> None:
         serializer.save(user=self.request.user)

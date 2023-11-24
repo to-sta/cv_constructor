@@ -11,7 +11,7 @@ from authentication.models import UserModel as User
 from .models import (
     AcademicExperience,
     CurriculumVitae,
-    Intrest,
+    Interest,
     Language,
     PersonalInformation,
     Reference,
@@ -87,12 +87,12 @@ class SkillFactory(factory.django.DjangoModelFactory):
     rating = random.randint(1, 5)
 
 
-class IntrestFactory(factory.django.DjangoModelFactory):
+class InterestFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = Intrest
+        model = Interest
 
     user = factory.SubFactory(UserFactory)
-    intrest = random.choice(["football", "Basketball", "Yoga", "Reading", "Blogginb"])
+    interest = random.choice(["football", "Basketball", "Yoga", "Reading", "Blogginb"])
 
 
 class ReferenceFactory(factory.django.DjangoModelFactory):
@@ -123,7 +123,7 @@ class CurriculumVitaeFactory(factory.django.DjangoModelFactory):
     personal_information = factory.SubFactory(PersonalInformationFactory)
     work_experience = factory.SubFactory(WorkExperienceFactory)
     skill = factory.SubFactory(SkillFactory)
-    intrest = factory.SubFactory(IntrestFactory)
+    interest = factory.SubFactory(InterestFactory)
     reference = factory.SubFactory(ReferenceFactory)
     language = factory.SubFactory(LanguageFactory)
     creation_date = factory.Faker("date_time", tzinfo=timezone.get_current_timezone())

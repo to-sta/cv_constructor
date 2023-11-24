@@ -11,7 +11,7 @@ router.register(r"personal_information", views.PersonalInformationViewSet)
 router.register(r"work_experience", views.WorkExperienceViewSet)
 router.register(r"academic_experience", views.AcademicExperienceViewSet)
 router.register(r"skill", views.SkillViewSet)
-router.register(r"intrest", views.IntrestViewSet)
+router.register(r"interest", views.InterestViewSet)
 router.register(r"reference", views.ReferenceViewSet)
 router.register(r"language", views.LanguageViewSet)
 

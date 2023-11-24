@@ -1,46 +1,43 @@
 <script lang="ts">
 	import MenuButton from "../../../buttons/menuButton.svelte";
 	import Icon from "../../../icons/icon.svelte";
+
+	const menuButtons = [
+		{
+			text: "PersonalInformation",
+			icon: "Person"
+		},
+		{
+			text: "WorkExperience",
+			icon: "Work"
+		},
+		{
+			text: "AcademicExperience",
+			icon: "Education"
+		},
+		{
+			text: "Skill",
+			icon: "Skill"
+		},
+		{
+			text: "Interest",
+			icon: "Interest"
+		},
+		{
+			text: "Reference",
+			icon: "Reference"
+		},
+		{
+			text: "Language",
+			icon: "Language"
+		}
+	];
 </script>
 
-<div>
-	<div>
-		<div class="flex flex-col h-screen gap-4 p-4 pt-8 bg-primary-100">
-			<MenuButton
-				text="PersonalInformation"
-				>
-				<Icon icon="Person" height="2em" width="2em"/>
-			</MenuButton>
-			<MenuButton
-				text="WorkExperience"
-			>
-			<Icon icon="Work" height="2em" width="2em"/>
-			</MenuButton>
-			<MenuButton
-				text="AcademicExperience"
-			>
-			<Icon icon="Education" height="2em" width="2em"/>
-			</MenuButton>
-			<MenuButton
-				text="Skill"
-			>
-			<Icon icon="Skill" height="2em" width="2em"/>
-			</MenuButton>
-			<MenuButton
-				text="Intrest"
-			>
-			<Icon icon="Interest" height="2em" width="2em"/>
-			</MenuButton>
-			<MenuButton
-				text="Reference"
-			>
-			<Icon icon="Reference" height="2em" width="2em"/>
-			</MenuButton>
-			<MenuButton
-				text="Language"
-			>
-			<Icon icon="Language" height="2em" width="2em"/>
-			</MenuButton>
-		</div>
-	</div>
+<div class="flex flex-col h-screen gap-4 p-4 pt-8 bg-primary-100">
+	{#each menuButtons as menuButton}
+		<MenuButton text={menuButton.text}>
+			<Icon icon={menuButton.icon} height="2em" width="2em" />
+		</MenuButton>
+	{/each}
 </div>
