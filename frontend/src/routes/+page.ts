@@ -8,9 +8,5 @@ import { get } from "svelte/store";
 import { goto } from "$app/navigation";
 
 if (browser) {
-	if (get(user) == null) {
-		goto("/auth");
-	} else {
-		goto("/dashboard");
-	}
+	goto(get(user) == null ? "/auth" : "/dashboard")
 }
