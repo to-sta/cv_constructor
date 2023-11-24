@@ -11,7 +11,7 @@ class CurriculumVitae(models.Model):
     )
     work_experience = models.ForeignKey("WorkExperience", on_delete=models.PROTECT)
     skill = models.ForeignKey("Skill", on_delete=models.PROTECT)
-    interest = models.ForeignKey("Inetrest", on_delete=models.PROTECT)
+    interest = models.ForeignKey("Interest", on_delete=models.PROTECT)
     reference = models.ForeignKey("Reference", on_delete=models.PROTECT)
     language = models.ForeignKey("Language", on_delete=models.PROTECT)
     creation_date = models.DateTimeField(auto_now_add=True)
