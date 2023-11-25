@@ -33,8 +33,8 @@
 	}
 </script>
 
-<header>
-	<nav class="bg-transparent shadow-md">
+<header class="pb-20">
+	<nav class="absolute w-full bg-white shadow-md">
 		<div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
 			<!-- Navbar Brand -->
 			<Navbrand />
@@ -66,7 +66,7 @@
 			</button>
 			<!-- Navbar Links -->
 			<div class="{isOpen ? '' : 'hidden'} w-full md:block md:w-auto" id="navbar-default">
-				<ul class="flex flex-col p-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0">
+				<ul class="flex flex-col py-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0">
 					{#each navitems as navitem}
 					<NavItem {...navitem} />
 					{/each}
