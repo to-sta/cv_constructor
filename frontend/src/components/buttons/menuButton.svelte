@@ -5,7 +5,6 @@
 
     const updateSidebarOption = (clicked: string) => {
 		sidebarOption.update(() => clicked);
-		console.log(clicked);
 	};
 </script>
 

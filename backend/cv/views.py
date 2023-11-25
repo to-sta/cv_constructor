@@ -60,7 +60,7 @@ class SkillViewSet(viewsets.ModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillSerializer
 
-    def create(self, request: Request, *args, **kwargs):
+    def create(self, request: Request) -> Response:
         serializer = self.get_serializer(
             data=request.data, many=isinstance(request.data, list)
         )
@@ -73,6 +73,14 @@ class SkillViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer) -> None:
         serializer.save(user=self.request.user)
+
+    def destroy(self, request: Request, pk=None) -> Response:
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def perform_destroy(self, instance):
+        instance.delete()
 
 
 class InterestViewSet(viewsets.ModelViewSet):
