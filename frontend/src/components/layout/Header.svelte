@@ -4,6 +4,7 @@
 	import Cookies from "js-cookie";
 	import { variables } from "$lib/dotenv/dotenv";
 	import user from "../../stores/user";
+	import NavItem from "./navbar/navItem.svelte";
 
 	export let navitems: NavItemType[] = [];
 	let isOpen: boolean = false;
@@ -67,21 +68,9 @@
 			<div class="{isOpen ? '' : 'hidden'} w-full md:block md:w-auto" id="navbar-default">
 				<ul class="flex flex-col p-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0">
 					{#each navitems as navitem}
-						<li>
-							<a
-								href="/{navitem.path}"
-								class="block py-2 pl-3 pr-4 rounded-md md:rounded-none md:bg-transparent md:p-0 hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-400"
-								aria-current="page">{navitem.text}</a
-							>
-						</li>
+					<NavItem {...navitem} />
 					{/each}
-					<li>
-						<a
-							class="block py-2 pl-3 pr-4 rounded-md md:rounded-none md:bg-transparent md:p-0 hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-400"
-							href="/auth"
-							on:click={handleLogout}>Logout</a
-						>
-					</li>
+					<NavItem text="Logout" path="auth" on:click={handleLogout} />
 				</ul>
 			</div>
 		</div>

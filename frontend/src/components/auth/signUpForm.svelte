@@ -1,62 +1,39 @@
 <script lang="ts">
-	// import { goto } from "$app/navigation";
+	import { writable } from "svelte/store";
 	import { variables } from "$lib/dotenv/dotenv";
 	import auth from "../../stores/auth";
 	import Button from "../buttons/button.svelte";
 	import { formErrors } from "./formErrors";
+	import { validateEmail, validatePassword, validatePasswordMatch, validateUsername } from "$lib/util/validation";
 
-	let username: string = "";
-	let email: string = "";
-	let password: string = "";
-	let confirmPassword: string = "";
 
-	let validUsername: boolean = true;
-	let validEmail: boolean = true;
-	let validPassword: boolean = true;
-	let validPasswordMatch: boolean = true;
+	let username = writable("");
+	let email = writable("");
+    let password = writable("");
+	let confirmPassword = writable("");
 
-	let formDisabled: boolean = false;
+    let validEmail = writable(true);
+    let validPassword = writable(true);
+	let validUsername = writable(true);
+	let validPasswordMatch = writable(true);
 
-	function validateUsername() {
-		if (username.length > 3) {
-			return (validUsername = true);
-		} else {
-			return (validUsername = false);
-		}
-	}
+	let formDisabled = writable(false);
 
-	function validateEmail() {
-		let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-		if (email.match(validRegex)) {
-			return (validEmail = true);
-		} else {
-			return (validEmail = false);
-		}
-	}
-
-	function validatePassword() {
-		// Checks if the password has more than 8 characters
-		if (password.length > 8) {
-			return (validPassword = true);
-		} else {
-			return (validPassword = false);
-		}
-	}
-
-	function validatePasswordMatch() {
-		if (password === confirmPassword) {
-			return (validPasswordMatch = true);
-		} else {
-			return (validPasswordMatch = false);
-		}
-	}
 
 	function formValid() {
-		if (validUsername && validEmail && validPassword && validPasswordMatch) {
-			formDisabled = false;
+		if ($username.length === 0 || $email.length === 0 || $password.length === 0 || $confirmPassword.length === 0) {
+			$formDisabled = true;
+			$validUsername = validateUsername($username);
+			$validEmail = validateEmail($email);
+			$validPassword = validatePassword($password);
+			$validPasswordMatch = validatePasswordMatch($password, $confirmPassword);
+			return false;
+		}
+		if ($validUsername && $validEmail && $validPassword && $validPasswordMatch) {
+			$formDisabled = false;
 			return true;
 		} else {
-			formDisabled = true;
+			$formDisabled = true;
 			return false;
 		}
 	}
@@ -75,7 +52,7 @@
 				})
 			});
 
-			if (response.status < 299) {
+			if (response.status === 201) {
 				auth.update((val) => !val);
 			}
 		}
@@ -92,10 +69,10 @@
 				name="username"
 				type="text"
 				placeholder="Your Username"
-				bind:value={username}
-				on:blur={validateUsername}
+				bind:value={$username}
+				on:blur={() => validUsername.set(validateUsername($username))}
 			/>
-			{#if !validUsername}
+			{#if !$validUsername}
 				<p class="text-error-200">{formErrors.email}</p>
 			{/if}
 		</fieldset>
@@ -107,10 +84,10 @@
 				name="email"
 				type="text"
 				placeholder="Your Email"
-				bind:value={email}
-				on:blur={validateEmail}
+				bind:value={$email}
+				on:blur={() => validEmail.set(validateEmail($email))}
 			/>
-			{#if !validEmail}
+			{#if !$validEmail}
 				<p class="text-error-200">{formErrors.email}</p>
 			{/if}
 		</fieldset>
@@ -121,10 +98,10 @@
 				id="password"
 				name="password"
 				type="password"
-				bind:value={password}
-				on:blur={validatePassword}
+				bind:value={$password}
+				on:blur={() => validPassword.set(validatePassword($password))}
 			/>
-			{#if !validPassword}
+			{#if !$validPassword}
 				<p class="text-error-200">{formErrors.password.check}</p>
 			{/if}
 		</fieldset>
@@ -135,13 +112,13 @@
 				id="confirmPassword"
 				name="confirmPassword"
 				type="password"
-				bind:value={confirmPassword}
-				on:blur={validatePasswordMatch}
+				bind:value={$confirmPassword}
+				on:blur={() => validPasswordMatch.set(validatePasswordMatch($password, $confirmPassword))}
 			/>
-			{#if !validPasswordMatch}
+			{#if !$validPasswordMatch}
 				<p class="text-error-200">{formErrors.password.match}</p>
 			{/if}
 		</fieldset>
-		<Button text="Submit" disabled={formDisabled} />
+		<Button text="Submit" disabled={$formDisabled} />
 	</div>
 </form>

@@ -10,6 +10,12 @@
 	let rating: string[] = [];
 	let numbers: number = 1;
 
+	const skillFields = {
+		name: "skill",
+		type: "text",
+		placeholder: "Javascript"
+	};
+
 	async function handleForm() {
 		if (skill.length === 0) {
 			return;
@@ -67,8 +73,8 @@
 					<fieldset class="flex flex-col gap-2">
 						<label for="skill" class="font-oswald">Skill</label>
 						<input
-							id="skill"
-							name="skill_{id}"
+							id=skillFields.name
+							name="skillFields.name"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
 							placeholder="Javascript"
 							type="text"

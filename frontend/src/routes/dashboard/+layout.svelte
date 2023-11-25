@@ -4,9 +4,7 @@
 	import type { NavItemType } from "../../lib/types/navItems";
 
 	let homeItems: NavItemType[] = [
-		{ text: "Home", path: "/home" },
-		{ text: "About", path: "/about" },
-		{ text: "Contact", path: "/contact" }
+		{ text: "Create", path: "create" },
 	];
 </script>
 

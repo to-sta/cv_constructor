@@ -5,42 +5,33 @@
 	import Button from "../buttons/button.svelte";
 	import { formErrors } from "./formErrors";
 	import Cookies from "js-cookie";
+	import { validateEmail, validatePassword } from "$lib/util/validation";
+	import { writable } from "svelte/store";
 
-	let email: string = "";
-	let password: string = "";
-	let validEmail: boolean = true;
-	let validPassword: boolean = true;
-	let formDisabled: boolean = false;
+	let email = writable("");
+    let password = writable("");
+    let validEmail = writable(true);
+    let validPassword = writable(true);
+    let formDisabled = writable(false);
 
-	function validateEmail() {
-		let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-		if (email.match(validRegex)) {
-			validEmail = true;
-			return true;
-		} else {
-			validEmail = false;
-			return false;
-		}
-	}
 
-	function validatePassword() {
-		// Checks if the password has more than 8 characters
-		if (password.length > 8) {
-			validPassword = true;
-			return true;
-		} else {
-			validPassword = false;
-			return false;
-		}
-	}
 
 	function formValid() {
-		if (validEmail && validPassword) {
-			formDisabled = false;
-			return true;
-		} else {
-			formDisabled = true;
+		if (($email.length === 0 ) || ($password.length === 0)) {
+			$formDisabled = true;
+			$validEmail = validateEmail($email);
+			$validPassword = validatePassword($password);
 			return false;
+		}
+		if (validEmail && validPassword) {
+			$formDisabled = false;
+			return false;
+		} else {
+			$validEmail = false;
+			$validPassword = false;
+			$formDisabled = true;
+			console.log($validEmail, $validPassword, $formDisabled)
+			return true;
 		}
 	}
 
@@ -82,10 +73,10 @@
 				name="email"
 				type="text"
 				placeholder="Your Email"
-				bind:value={email}
-				on:blur={validateEmail}
+				bind:value={$email}
+				on:blur={() => validEmail.set(validateEmail($email))}
 			/>
-			{#if !validEmail}
+			{#if !$validEmail}
 				<p class="text-error-200">{formErrors.email}</p>
 			{/if}
 		</fieldset>
@@ -96,13 +87,13 @@
 				id="password"
 				name="password"
 				type="password"
-				bind:value={password}
-				on:blur={validatePassword}
+				bind:value={$password}
+				on:blur={() => validPassword.set(validatePassword($password))}
 			/>
-			{#if !validPassword}
+			{#if !$validPassword}
 				<p class="text-error-200">{formErrors.password.check}</p>
 			{/if}
 		</fieldset>
-		<Button text="Submit" disabled={formDisabled} />
+		<Button text="Submit" disabled={$formDisabled} />
 	</div>
 </form>

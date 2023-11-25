@@ -1,5 +1,4 @@
 <script lang="ts">
-	import user from "../../stores/user";
 	import Icon from "../../components/icons/icon.svelte";
 </script>
 
