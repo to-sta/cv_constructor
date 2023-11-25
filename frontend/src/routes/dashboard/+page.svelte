@@ -2,6 +2,11 @@
 	import Icon from "../../components/icons/icon.svelte";
 </script>
 
+<svelte:head>
+	<title>Dashboard</title>
+	<meta name="description" content="Dashboard" />
+</svelte:head>
+
 <section class="max-w-screen-xl px-4 pb-4 mx-auto">
 	<div class="py-4">
 		<h1 class="text-2xl font-bold border-b-2 border-primary-300 font-oswald text">Your CV's</h1>

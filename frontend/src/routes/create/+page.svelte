@@ -4,6 +4,11 @@
 	import Icon from "../../components/icons/icon.svelte";
 </script>
 
+<svelte:head>
+	<title>Create CV</title>
+	<meta name="description" content="Create CV" />
+</svelte:head>
+
 <main class="w-full h-screen bg-slate-200">
 	<div class="flex items-center justify-center w-full h-full">
 		<a class="absolute z-10 top-5 right-10" href="/dashboard">
