@@ -68,7 +68,7 @@
 			<div class="{isOpen ? '' : 'hidden'} w-full md:block md:w-auto" id="navbar-default">
 				<ul class="flex flex-col py-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0">
 					{#each navitems as navitem}
-					<NavItem {...navitem} />
+						<NavItem {...navitem} />
 					{/each}
 					<NavItem text="Logout" path="auth" on:click={handleLogout} />
 				</ul>

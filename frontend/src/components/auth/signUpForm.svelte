@@ -4,24 +4,32 @@
 	import auth from "../../stores/auth";
 	import Button from "../buttons/button.svelte";
 	import { formErrors } from "./formErrors";
-	import { validateEmail, validatePassword, validatePasswordMatch, validateUsername } from "$lib/util/validation";
-
+	import {
+		validateEmail,
+		validatePassword,
+		validatePasswordMatch,
+		validateUsername
+	} from "$lib/util/validation";
 
 	let username = writable("");
 	let email = writable("");
-    let password = writable("");
+	let password = writable("");
 	let confirmPassword = writable("");
 
-    let validEmail = writable(true);
-    let validPassword = writable(true);
+	let validEmail = writable(true);
+	let validPassword = writable(true);
 	let validUsername = writable(true);
 	let validPasswordMatch = writable(true);
 
 	let formDisabled = writable(false);
 
-
 	function formValid() {
-		if ($username.length === 0 || $email.length === 0 || $password.length === 0 || $confirmPassword.length === 0) {
+		if (
+			$username.length === 0 ||
+			$email.length === 0 ||
+			$password.length === 0 ||
+			$confirmPassword.length === 0
+		) {
 			$formDisabled = true;
 			$validUsername = validateUsername($username);
 			$validEmail = validateEmail($email);

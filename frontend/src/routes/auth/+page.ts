@@ -4,7 +4,7 @@ import { get } from "svelte/store";
 import { goto } from "$app/navigation";
 
 if (browser) {
-    if (get(user) !== null) {
-        goto("/dashboard")
-    }
+	if (get(user) !== null) {
+		goto("/dashboard");
+	}
 }

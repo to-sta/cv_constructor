@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { sidebarOption } from "../../stores/sidebarOption";
 
-    export let text: string = "";
+	export let text: string = "";
 
-    const updateSidebarOption = (clicked: string) => {
+	const updateSidebarOption = (clicked: string) => {
 		sidebarOption.update(() => clicked);
 	};
 </script>

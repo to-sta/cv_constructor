@@ -1,5 +1,5 @@
 export type languageType = {
-    id?: string;
-    language: string;
-    rating: string;
-}
+	id?: string;
+	language: string;
+	rating: string;
+};

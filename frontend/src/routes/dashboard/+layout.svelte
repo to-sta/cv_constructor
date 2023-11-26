@@ -3,9 +3,7 @@
 	import Footer from "../../components/layout/footer.svelte";
 	import type { NavItemType } from "../../lib/types/navItems";
 
-	let homeItems: NavItemType[] = [
-		{ text: "Create", path: "create" },
-	];
+	let homeItems: NavItemType[] = [{ text: "Create", path: "create" }];
 </script>
 
 <Header navitems={homeItems} />

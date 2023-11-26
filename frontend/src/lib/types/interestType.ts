@@ -1,4 +1,4 @@
 export type interestType = {
-    id?: string;
-    interest: string;
-}
+	id?: string;
+	interest: string;
+};

@@ -23,7 +23,6 @@
 		interest: "",
 		rating: ""
 	};
-
 </script>
 
 <!-- EXAMPLE CV

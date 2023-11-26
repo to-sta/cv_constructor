@@ -8,5 +8,5 @@
 	{disabled}
 	type="submit"
 >
-<Icon icon="Plus" height="2em" width="2em"/>
+	<Icon icon="Plus" height="2em" width="2em" />
 </button>

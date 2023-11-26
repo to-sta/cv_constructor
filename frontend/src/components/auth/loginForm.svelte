@@ -9,15 +9,13 @@
 	import { writable } from "svelte/store";
 
 	let email = writable("");
-    let password = writable("");
-    let validEmail = writable(true);
-    let validPassword = writable(true);
-    let formDisabled = writable(false);
-
-
+	let password = writable("");
+	let validEmail = writable(true);
+	let validPassword = writable(true);
+	let formDisabled = writable(false);
 
 	function formValid() {
-		if (($email.length === 0 ) || ($password.length === 0)) {
+		if ($email.length === 0 || $password.length === 0) {
 			$formDisabled = true;
 			$validEmail = validateEmail($email);
 			$validPassword = validatePassword($password);
@@ -30,7 +28,7 @@
 			$validEmail = false;
 			$validPassword = false;
 			$formDisabled = true;
-			console.log($validEmail, $validPassword, $formDisabled)
+			console.log($validEmail, $validPassword, $formDisabled);
 			return true;
 		}
 	}
