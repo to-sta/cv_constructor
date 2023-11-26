@@ -5,7 +5,6 @@
 	import Cookies from "js-cookie";
 	import Icon from "../../../../icons/icon.svelte";
 	import { writable } from "svelte/store";
-	import type { skillType } from "$lib/types/skillType";
 	import { preFetchData } from "$lib/util/create/prefetch";
 	import { onMount } from "svelte";
 	import { deleteEntry } from "$lib/util/create/deleteEntry";

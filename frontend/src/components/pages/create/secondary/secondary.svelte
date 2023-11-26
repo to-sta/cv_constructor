@@ -9,7 +9,16 @@
 	import { sidebarOption } from "../../../../stores/sidebarOption";
 	import MenuExpandButton from "../../../buttons/menuExpandButton.svelte";
 
-	const components: any = {
+	const components: Record<
+		string,
+		| typeof PersonalInformation
+		| typeof WorkExperience
+		| typeof Language
+		| typeof Reference
+		| typeof AcademicExperience
+		| typeof Skill
+		| typeof Interest
+	> = {
 		PersonalInformation,
 		WorkExperience,
 		Language,
