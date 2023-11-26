@@ -66,21 +66,22 @@ class SkillViewSet(viewsets.ModelViewSet):
         )
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(
-            serializer.data, status=status.HTTP_201_CREATED, headers=headers
-        )
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer) -> None:
         serializer.save(user=self.request.user)
+
+    def update(self, request: Request, pk=None) -> Response:
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(instance)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def destroy(self, request: Request, pk=None) -> Response:
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-    def perform_destroy(self, instance):
-        instance.delete()
 
 
 class InterestViewSet(viewsets.ModelViewSet):

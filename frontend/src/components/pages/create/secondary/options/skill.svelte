@@ -6,34 +6,22 @@
 	import Icon from "../../../../icons/icon.svelte";
 	import { writable } from "svelte/store";
 	import type { skillType } from "$lib/types/skillType";
+	import { preFetchData } from "$lib/util/create/prefetch";
+	import { onMount } from "svelte";
+	import { deleteEntry } from "$lib/util/create/deleteEntry";
+	import type { cvTypes } from "$lib/types/cvTypes";
 
-	let skill = writable<skillType[]>([{ skill: "", rating: "" }]);
-	let numbers = writable(1);
+	let skill = writable<cvTypes[]>([{ skill: "", rating: "" }]);
 
 	function addElement() {
 		$skill.push({ skill: "", rating: "" });
-		$numbers++;
+		skill.update(() => $skill);
 	}
 
-
-	async function preFetchData() {
-		let csrftoken: string | undefined = Cookies.get("csrftoken") || "";
-
-		const response = await fetch(`${variables.API_ROOT}/api/skill/`, {
-			method: "GET",
-			mode: "cors",
-			credentials: "include",
-			headers: {
-				"Content-Type": "application/json",
-				"X-CSRFToken": csrftoken
-			}
-		});
-		let data = await response.json();
-		skill.update((val) => (val = Object.values(data)));
-		numbers.update((val) => (val = data.length));
-	}
-
-	preFetchData();
+	onMount(async () => {
+		const initialData = await preFetchData("/api/skill/");
+		skill.update(() => Object.values(initialData));
+	});
 
 	async function handleForm() {
 		if ($skill.length === 0) {
@@ -63,45 +51,57 @@
 		}
 
 		if (existingSkills.length > 0) {
-        const response = await fetch(`${variables.API_ROOT}/api/skill/`, {
-            method: "PUT",
-            mode: "cors",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": csrftoken
-            },
-            body: JSON.stringify(existingSkills)
-        });
+			for (let i = 0; i < existingSkills.length; i++) {
+				const response = await fetch(`${variables.API_ROOT}/api/skill/${$skill[i].id}/`, {
+					method: "PUT",
+					mode: "cors",
+					credentials: "include",
+					headers: {
+						"Content-Type": "application/json",
+						"X-CSRFToken": csrftoken
+					},
+					body: JSON.stringify(existingSkills[i])
+				});
 
-        if (!response.ok) {
-            // Handle error...
-        }
-    }
-	}
-
-	async function deleteEntry(id: number) {
-		const payload = $skill[id];
-
-		let csrftoken: string | undefined = Cookies.get("csrftoken") || "";
-
-		const response = await fetch(`${variables.API_ROOT}/api/skill/${$skill[id].id}/`, {
-			method: "DELETE",
-			mode: "cors",
-			credentials: "include",
-			headers: {
-				"Content-Type": "application/json",
-				"X-CSRFToken": csrftoken
-			},
-			body: JSON.stringify(payload)
-		});
-
-		if (response.ok) {
-			$skill.splice($numbers, 1);
-			$numbers--;
-			console.log("request was successful");
+				if (!response.ok) {
+					// Handle error...
+				}
+			}
 		}
 	}
+
+	async function handleDelete(id: number) {
+		const updatedSkill = await deleteEntry($skill, id);
+		skill.update(() => updatedSkill);
+	}
+
+	// async function deleteEntry(id: number) {
+	// 	if (!$skill[id].id) {
+	// 		$skill.splice(id, 1);
+	// 		skill.update(() => $skill);
+	// 		return;
+	// 	}
+
+	// 	const payload = $skill[id];
+
+	// 	let csrftoken: string | undefined = Cookies.get("csrftoken") || "";
+
+	// 	const response = await fetch(`${variables.API_ROOT}/api/skill/${$skill[id].id}/`, {
+	// 		method: "DELETE",
+	// 		mode: "cors",
+	// 		credentials: "include",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			"X-CSRFToken": csrftoken
+	// 		},
+	// 		body: JSON.stringify(payload)
+	// 	});
+
+	// 	if (response.ok) {
+	// 		$skill.splice(id, 1);
+	// 		console.log("request was successful");
+	// 	}
+	// }
 </script>
 
 <div>
@@ -110,7 +110,7 @@
 <div>
 	<form on:submit|preventDefault={handleForm}>
 		<div class="pt-4 space-y-4">
-			{#each Array($numbers) as _, id}
+			{#each Array($skill.length) as _, id}
 				<div class="relative flex gap-3">
 					<!-- Trashcan button -->
 
@@ -118,7 +118,7 @@
 						<div
 							class="flex items-center justify-center w-8 h-8 bg-black rounded-full text-primary-300 fill-primary-300 hover:bg-secondary-100"
 						>
-							<button on:click|preventDefault={() => deleteEntry(id)}>
+							<button on:click|preventDefault={() => handleDelete(id)}>
 								<Icon icon="Delete" height="1em" width="1em" />
 							</button>
 						</div>

@@ -47,9 +47,12 @@ class SkillSerializer(serializers.ModelSerializer):
     def validate(self, attrs: Any) -> Any:
         user = self.context["request"].user
         skill = attrs["skill"]
+        rating = attrs["rating"]
 
-        if Skill.objects.filter(user=user, skill=skill).exists():
-            raise ValidationError("A record with this user and skill already exists")
+        if Skill.objects.filter(user=user, skill=skill, rating=rating).exists():
+            raise ValidationError(
+                "A record with this user, skill and rating already exists"
+            )
         return attrs
 
 
