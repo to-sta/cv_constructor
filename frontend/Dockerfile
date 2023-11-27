@@ -12,4 +12,4 @@ RUN pnpm install
 # Copy code from context to image
 COPY . .
 
-CMD pnpm dev
+CMD ["pnpm", "run", "dev", "--host", "0.0.0.0"]
