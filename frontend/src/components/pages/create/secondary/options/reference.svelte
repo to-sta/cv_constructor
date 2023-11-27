@@ -14,7 +14,7 @@
 			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="name" class="font-oswald">Name:</label>
+						<label class="font-oswald" for="name">Name:</label>
 						<input
 							id="name"
 							name="name_{id}"
@@ -24,7 +24,7 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="job_titel" class="font-oswald">Job Title:</label>
+						<label class="font-oswald" for="job_titel">Job Title:</label>
 						<input
 							id="job_titel"
 							name="job_titel_{id}"
@@ -36,7 +36,7 @@
 				</div>
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="company" class="font-oswald">Company:</label>
+						<label class="font-oswald" for="company">Company:</label>
 						<input
 							id="company"
 							name="company_{id}"
@@ -46,7 +46,7 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="phone" class="font-oswald">Phone:</label>
+						<label class="font-oswald" for="phone">Phone:</label>
 						<input
 							id="phone"
 							name="phone_{id}"

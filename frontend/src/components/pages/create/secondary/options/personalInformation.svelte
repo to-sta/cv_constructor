@@ -10,7 +10,7 @@
 		<div class="space-y-4">
 			<div class="flex gap-3">
 				<fieldset class="flex flex-col gap-2">
-					<label for="first_name" class="font-oswald">First name:</label>
+					<label class="font-oswald" for="first_name">First name:</label>
 					<input
 						id="first_name"
 						name="first_name"
@@ -20,7 +20,7 @@
 					/>
 				</fieldset>
 				<fieldset class="flex flex-col gap-2">
-					<label for="last_name" class="font-oswald">Last name:</label>
+					<label class="font-oswald" for="last_name">Last name:</label>
 					<input
 						id="last_name"
 						name="last_name"
@@ -30,7 +30,7 @@
 					/>
 				</fieldset>
 				<fieldset class="flex flex-col gap-2">
-					<label for="date_of_birth" class="font-oswald">Date of birth:</label>
+					<label class="font-oswald" for="date_of_birth">Date of birth:</label>
 					<input
 						id="date_of_birth"
 						name="date_of_birth"
@@ -42,7 +42,7 @@
 			</div>
 			<div class="flex gap-3">
 				<fieldset class="flex flex-col gap-2">
-					<label for="email" class="font-oswald">Email:</label>
+					<label class="font-oswald" for="email">Email:</label>
 					<input
 						id="email"
 						name="email"
@@ -52,7 +52,7 @@
 					/>
 				</fieldset>
 				<fieldset class="flex flex-col gap-2">
-					<label for="phone" class="font-oswald">Phone:</label>
+					<label class="font-oswald" for="phone">Phone:</label>
 					<input
 						id="phone"
 						name="phone"
@@ -64,7 +64,7 @@
 			</div>
 			<div>
 				<fieldset class="flex flex-col gap-2">
-					<label for="image" class="font-oswald">Profile Image:</label>
+					<label class="font-oswald" for="image">Profile Image:</label>
 					<input
 						id="image"
 						name="image"

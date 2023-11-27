@@ -72,11 +72,11 @@
 		<fieldset class="flex flex-col">
 			<label for="username">Username:</label>
 			<input
-				class="py-1 pl-2 bg-transparent border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				id="username"
 				name="username"
-				type="text"
+				class="py-1 pl-2 bg-transparent border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				placeholder="Your Username"
+				type="text"
 				bind:value={$username}
 				on:blur={() => validUsername.set(validateUsername($username))}
 			/>
@@ -87,11 +87,11 @@
 		<fieldset class="flex flex-col">
 			<label for="email">Email:</label>
 			<input
-				class="py-1 pl-2 bg-transparent border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				id="email"
 				name="email"
-				type="text"
+				class="py-1 pl-2 bg-transparent border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				placeholder="Your Email"
+				type="text"
 				bind:value={$email}
 				on:blur={() => validEmail.set(validateEmail($email))}
 			/>
@@ -102,9 +102,9 @@
 		<fieldset class="flex flex-col">
 			<label for="password">Password:</label>
 			<input
-				class="py-1 pl-2 bg-transparent border-b border-black focus:border-b-2 focus:outline-none focus:ring-0"
 				id="password"
 				name="password"
+				class="py-1 pl-2 bg-transparent border-b border-black focus:border-b-2 focus:outline-none focus:ring-0"
 				type="password"
 				bind:value={$password}
 				on:blur={() => validPassword.set(validatePassword($password))}
@@ -116,9 +116,9 @@
 		<fieldset class="flex flex-col pb-4">
 			<label for="confirmPassword">Confirm Password:</label>
 			<input
-				class="py-1 pl-2 bg-transparent border-b border-black focus:border-b-2 focus:outline-none focus:ring-0"
 				id="confirmPassword"
 				name="confirmPassword"
+				class="py-1 pl-2 bg-transparent border-b border-black focus:border-b-2 focus:outline-none focus:ring-0"
 				type="password"
 				bind:value={$confirmPassword}
 				on:blur={() => validPasswordMatch.set(validatePasswordMatch($password, $confirmPassword))}
@@ -127,6 +127,6 @@
 				<p class="text-error-200">{formErrors.password.match}</p>
 			{/if}
 		</fieldset>
-		<Button text="Submit" disabled={$formDisabled} />
+		<Button disabled={$formDisabled} text="Submit" />
 	</div>
 </form>

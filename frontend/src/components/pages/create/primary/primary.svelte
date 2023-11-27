@@ -37,7 +37,7 @@
 <div class="flex flex-col h-screen gap-4 p-4 pt-8 bg-primary-100">
 	{#each menuButtons as menuButton}
 		<MenuButton text={menuButton.text}>
-			<Icon icon={menuButton.icon} height="2em" width="2em" />
+			<Icon height="2em" icon={menuButton.icon} width="2em" />
 		</MenuButton>
 	{/each}
 </div>

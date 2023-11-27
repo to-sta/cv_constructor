@@ -14,7 +14,7 @@
 			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="language" class="font-oswald">Language</label>
+						<label class="font-oswald" for="language">Language</label>
 						<input
 							id="language"
 							name="language_{id}"
@@ -24,12 +24,12 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="rating" class="font-oswald">Rating:</label>
+						<label class="font-oswald" for="rating">Rating:</label>
 						<input
 							id="rating"
-							max="5"
 							name="rating_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
+							max="5"
 							placeholder="Mustermann"
 							type="range"
 						/>

@@ -14,7 +14,7 @@
 			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="company" class="font-oswald">Company:</label>
+						<label class="font-oswald" for="company">Company:</label>
 						<input
 							id="company"
 							name="company_{id}"
@@ -24,7 +24,7 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="location" class="font-oswald">Location:</label>
+						<label class="font-oswald" for="location">Location:</label>
 						<input
 							id="location"
 							name="location_{id}"
@@ -36,7 +36,7 @@
 				</div>
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="job_titel" class="font-oswald">Job Title:</label>
+						<label class="font-oswald" for="job_titel">Job Title:</label>
 						<input
 							id="job_titel"
 							name="job_titel_{id}"
@@ -46,7 +46,7 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="start_date" class="font-oswald">Start Date:</label>
+						<label class="font-oswald" for="start_date">Start Date:</label>
 						<input
 							id="start_date"
 							name="start_date_{id}"
@@ -55,7 +55,7 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="end_date" class="font-oswald">End Date:</label>
+						<label class="font-oswald" for="end_date">End Date:</label>
 						<input
 							id="end_date"
 							name="end_date_{id}"
@@ -66,19 +66,19 @@
 				</div>
 				<div>
 					<fieldset class="flex flex-col gap-2">
-						<label for="summary" class="font-oswald">Summary:</label>
+						<label class="font-oswald" for="summary">Summary:</label>
 						<textarea
 							id="summary"
 							name="summary_{id}"
-							placeholder="Type your summary here..."
 							class="p-2 bg-white rounded-lg opacity-75"
+							placeholder="Type your summary here..."
 						/>
 					</fieldset>
 				</div>
 			{/each}
 
 			<div class="flex items-center justify-center">
-				<button on:click={() => numbers++} class="hover:scale-110">
+				<button class="hover:scale-110" on:click={() => numbers++}>
 					<AddButton />
 				</button>
 			</div>

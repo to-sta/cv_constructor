@@ -22,15 +22,15 @@
 </script>
 
 <fieldset class="flex flex-col gap-2">
-	<label for={name} class="font-oswald">{label}</label>
+	<label class="font-oswald" for={name}>{label}</label>
 	<input
 		id={name}
 		{name}
 		class="py-1 pl-2 bg-white rounded-lg opacity-75"
+		{max}
+		{min}
 		{placeholder}
 		{...{ type }}
-		{min}
-		{max}
 		bind:value
 		on:blur={validateInput}
 	/>

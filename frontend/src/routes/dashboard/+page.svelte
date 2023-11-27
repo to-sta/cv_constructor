@@ -17,7 +17,7 @@
 		>
 			<a class="flex flex-col items-center justify-center" href="/create">
 				<div>
-					<Icon icon="Plus" width="4em" height="4em" />
+					<Icon height="4em" icon="Plus" width="4em" />
 				</div>
 				<div>
 					<h3 class="text-lg font-semibold font-oswald">Add your CV</h3>

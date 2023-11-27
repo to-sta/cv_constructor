@@ -6,6 +6,10 @@ module.exports = {
 		"plugin:svelte/recommended",
 		"prettier"
 	],
+	rules: {
+		"svelte/sort-attributes": "error",
+		"svelte/mustache-spacing": "error"
+	},
 	parser: "@typescript-eslint/parser",
 	plugins: ["@typescript-eslint"],
 	parserOptions: {

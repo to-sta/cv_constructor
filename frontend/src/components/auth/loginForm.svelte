@@ -66,11 +66,11 @@
 		<fieldset class="flex flex-col">
 			<label for="email">Email:</label>
 			<input
-				class="py-1 pl-2 bg-transparent border-0 border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				id="email"
 				name="email"
-				type="text"
+				class="py-1 pl-2 bg-transparent border-0 border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				placeholder="Your Email"
+				type="text"
 				bind:value={$email}
 				on:blur={() => validEmail.set(validateEmail($email))}
 			/>
@@ -81,9 +81,9 @@
 		<fieldset class="flex flex-col pb-4">
 			<label for="password">Password:</label>
 			<input
-				class="py-1 pl-2 bg-transparent border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				id="password"
 				name="password"
+				class="py-1 pl-2 bg-transparent border-b border-black placeholder:text-gray-700/80 focus:border-b-2 focus:outline-none focus:ring-0"
 				type="password"
 				bind:value={$password}
 				on:blur={() => validPassword.set(validatePassword($password))}
@@ -92,6 +92,6 @@
 				<p class="text-error-200">{formErrors.password.check}</p>
 			{/if}
 		</fieldset>
-		<Button text="Submit" disabled={$formDisabled} />
+		<Button disabled={$formDisabled} text="Submit" />
 	</div>
 </form>

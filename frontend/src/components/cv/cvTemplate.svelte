@@ -1,28 +1,28 @@
 <script lang="ts">
-	let firstName = "";
-	let lastName = "";
-	let dateOfBirth = "";
-	let email = "";
-	let phone = "";
-	let image = "";
-	let language = {
-		language: "German",
-		rating: "4"
-	};
-	let reference = {
-		name: "",
-		jobTite: "",
-		company: "",
-		phone: ""
-	};
-	let skill = {
-		skill: "",
-		rating: ""
-	};
-	let interest = {
-		interest: "",
-		rating: ""
-	};
+	// let firstName = "";
+	// let lastName = "";
+	// let dateOfBirth = "";
+	// let email = "";
+	// let phone = "";
+	// let image = "";
+	// let language = {
+	// 	language: "German",
+	// 	rating: "4"
+	// };
+	// let reference = {
+	// 	name: "",
+	// 	jobTite: "",
+	// 	company: "",
+	// 	phone: ""
+	// };
+	// let skill = {
+	// 	skill: "",
+	// 	rating: ""
+	// };
+	// let interest = {
+	// 	interest: "",
+	// 	rating: ""
+	// };
 </script>
 
 <!-- EXAMPLE CV
@@ -36,8 +36,8 @@ https://img.freepik.com/freie-psd/saubere-und-moderne-lebenslauf-oder-lebenslauf
 		<!-- Left Side -->
 		<aside class="flex flex-col w-1/3 h-full gap-4 text-white bg-gray-800/90">
 			<img
-				alt="potrait"
 				class="object-cover h-96"
+				alt="potrait"
 				src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
 			/>
 			<!-- Education  -->

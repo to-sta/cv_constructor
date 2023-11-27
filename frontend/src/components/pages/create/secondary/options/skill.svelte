@@ -109,7 +109,7 @@
 <div>
 	<form on:submit|preventDefault={handleForm}>
 		<div class="pt-4 space-y-4">
-			{#each Array($skill.length) as _, id}
+			{#each Array($skill.length) as _,id}
 				<div class="relative flex gap-3">
 					<!-- Trashcan button -->
 
@@ -118,13 +118,13 @@
 							class="flex items-center justify-center w-8 h-8 bg-black rounded-full text-primary-300 fill-primary-300 hover:bg-secondary-100"
 						>
 							<button on:click|preventDefault={() => handleDelete(id)}>
-								<Icon icon="Delete" height="1em" width="1em" />
+								<Icon height="1em" icon="Delete" width="1em" />
 							</button>
 						</div>
 					</div>
 
 					<fieldset class="flex flex-col gap-2">
-						<label for="skill" class="font-oswald">Skill</label>
+						<label class="font-oswald" for="skill">Skill</label>
 						<input
 							id="skillFields.name"
 							name="skillFields.name"
@@ -135,13 +135,13 @@
 						/>
 					</fieldset>
 					<fieldset class="flex flex-col gap-2">
-						<label for="rating" class="font-oswald">Rating:</label>
+						<label class="font-oswald" for="rating">Rating:</label>
 						<input
 							id="rating"
-							min="1"
-							max="5"
 							name="rating_{id}"
 							class="py-1 pl-2 bg-white rounded-lg opacity-75"
+							max="5"
+							min="1"
 							type="range"
 							bind:value={$skill[id].rating}
 						/>

@@ -14,7 +14,7 @@
 			{#each Array(numbers) as id}
 				<div class="flex gap-3">
 					<fieldset class="flex flex-col gap-2">
-						<label for="interest" class="font-oswald">Interest</label>
+						<label class="font-oswald" for="interest">Interest</label>
 						<input
 							id="interest"
 							name="interest_{id}"

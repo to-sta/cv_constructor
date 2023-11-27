@@ -2,6 +2,7 @@
 	import CvTemplate from "../../components/cv/cvTemplate.svelte";
 	import Button from "../../components/buttons/button.svelte";
 	import Icon from "../../components/icons/icon.svelte";
+	import DownloadButton from "../../components/buttons/downloadButton.svelte";
 </script>
 
 <svelte:head>
@@ -14,12 +15,15 @@
 		<a class="absolute z-10 top-5 right-10" href="/dashboard">
 			<Button text={"Back to Dashboard"}>
 				<div class="fill-current text-primary-300">
-					<Icon icon="Left" height="1.5em" width="1.5em" />
+					<Icon height="1.5em" icon="Left" width="1.5em" />
 				</div>
 			</Button>
 		</a>
 		<div class="bg-white shadow-xl shadow-black/40 w-[210mm] h-[297mm]">
 			<CvTemplate />
+			<div class="flex items-center justify-center w-full pt-4">
+				<DownloadButton />
+			</div>
 		</div>
 	</div>
 </main>
