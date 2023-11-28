@@ -14,7 +14,6 @@ services:
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
-      - VITE_API_ROOT=${VITE_API_ROOT}
       - FRONTEND_PORT=${FRONTEND_PORT}
 
   frontend:
@@ -28,3 +27,5 @@ services:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     expose:
       - "${FRONTEND_PORT}"
+    environment:
+      - VITE_API_ROOT=${VITE_API_ROOT}
