@@ -12,9 +12,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+import django_stubs_ext
 import dotenv
+from rest_framework import viewsets
 
 dotenv.load_dotenv(override=True)
+
+django_stubs_ext.monkeypatch(extra_classes=(viewsets.ModelViewSet,))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
